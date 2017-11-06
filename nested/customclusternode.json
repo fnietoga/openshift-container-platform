@@ -157,7 +157,7 @@
 						"uri": "[parameters('customImageName')]"
 					},
 					"vhd": {
-						"uri": "[concat(parameters('customStorageAccount'), 'vhds/', parameters('hostname'), '.vhd')]"
+						"uri": "[concat(concat(reference(resourceId(resourceGroup().name, 'Microsoft.Storage/storageAccounts', parameters('newStorageAccountOs')), parameters('apiVersionStorage')).primaryEndpoints['blob'], 'vhds/'), parameters('hostname'), '.vhd')]"
 					},
 					"osType": "Linux",
 					"caching": "ReadWrite",
